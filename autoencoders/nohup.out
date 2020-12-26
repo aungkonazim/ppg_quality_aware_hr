@@ -1,0 +1,7 @@
+[NbConvertApp] Converting notebook bidirectional_autoencoder.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python3
+2020-12-26 13:24:00.559054: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2020-12-26 13:24:00.582354: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3699850000 Hz
+2020-12-26 13:24:00.583210: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x562cb0858a80 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-12-26 13:24:00.583231: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-12-26 13:24:00.583294: I tensorflow/core/common_runtime/process_util.cc:147] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
