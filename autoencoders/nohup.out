@@ -5,3 +5,183 @@
 2020-12-26 13:24:00.583210: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x562cb0858a80 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
 2020-12-26 13:24:00.583231: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
 2020-12-26 13:24:00.583294: I tensorflow/core/common_runtime/process_util.cc:147] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+Traceback (most recent call last):
+  File "/home/mullah/anaconda3/bin/jupyter-nbconvert", line 11, in <module>
+    sys.exit(main())
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/jupyter_core/application.py", line 270, in launch_instance
+    return super(JupyterApp, cls).launch_instance(argv=argv, **kwargs)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/traitlets/config/application.py", line 845, in launch_instance
+    app.start()
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/nbconvertapp.py", line 350, in start
+    self.convert_notebooks()
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/nbconvertapp.py", line 524, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/nbconvertapp.py", line 489, in convert_single_notebook
+    output, resources = self.export_single_notebook(notebook_filename, resources, input_buffer=input_buffer)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/nbconvertapp.py", line 418, in export_single_notebook
+    output, resources = self.exporter.from_filename(notebook_filename, resources=resources)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/exporters/exporter.py", line 181, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/exporters/exporter.py", line 199, in from_file
+    return self.from_notebook_node(nbformat.read(file_stream, as_version=4), resources=resources, **kw)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/exporters/notebook.py", line 32, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/exporters/exporter.py", line 143, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/exporters/exporter.py", line 318, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/preprocessors/base.py", line 47, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/preprocessors/execute.py", line 79, in preprocess
+    self.execute()
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/mullah/anaconda3/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 540, in async_execute
+    await self.async_execute_cell(
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/preprocessors/execute.py", line 123, in async_execute_cell
+    cell, resources = self.preprocess_cell(cell, self.resources, cell_index)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbconvert/preprocessors/execute.py", line 146, in preprocess_cell
+    cell = run_sync(NotebookClient.async_execute_cell)(self, cell, index, store_history=self.store_history)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nest_asyncio.py", line 96, in run_until_complete
+    return f.result()
+  File "/home/mullah/anaconda3/lib/python3.8/asyncio/futures.py", line 178, in result
+    raise self._exception
+  File "/home/mullah/anaconda3/lib/python3.8/asyncio/tasks.py", line 280, in __step
+    result = coro.send(None)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 832, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/mullah/anaconda3/lib/python3.8/site-packages/nbclient/client.py", line 740, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
+es = EarlyStopping(monitor='val_loss', mode='min', verbose=1,patience=20)
+callbacks_list = [es,checkpoint]
+history = model.fit(train_x,train_y,validation_data=(val_x,val_y), epochs=200, batch_size=1000,
+          callbacks=callbacks_list,shuffle=True)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mMemoryError[0m                               Traceback (most recent call last)
+[0;32m<ipython-input-1-b9f87f5875fe>[0m in [0;36m<module>[0;34m[0m
+[1;32m      2[0m [0mes[0m [0;34m=[0m [0mEarlyStopping[0m[0;34m([0m[0mmonitor[0m[0;34m=[0m[0;34m'val_loss'[0m[0;34m,[0m [0mmode[0m[0;34m=[0m[0;34m'min'[0m[0;34m,[0m [0mverbose[0m[0;34m=[0m[0;36m1[0m[0;34m,[0m[0mpatience[0m[0;34m=[0m[0;36m20[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0mcallbacks_list[0m [0;34m=[0m [0;34m[[0m[0mes[0m[0;34m,[0m[0mcheckpoint[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m history = model.fit(train_x,train_y,validation_data=(val_x,val_y), epochs=200, batch_size=1000,
+[0m[1;32m      5[0m           callbacks=callbacks_list,shuffle=True)
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/keras/engine/training.py[0m in [0;36m_method_wrapper[0;34m(self, *args, **kwargs)[0m
+[1;32m     64[0m   [0;32mdef[0m [0m_method_wrapper[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     65[0m     [0;32mif[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0m_in_multi_worker_mode[0m[0;34m([0m[0;34m)[0m[0;34m:[0m  [0;31m# pylint: disable=protected-access[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 66[0;31m       [0;32mreturn[0m [0mmethod[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     67[0m [0;34m[0m[0m
+[1;32m     68[0m     [0;31m# Running inside `run_distribute_coordinator` already.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/keras/engine/training.py[0m in [0;36mfit[0;34m(self, x, y, batch_size, epochs, verbose, callbacks, validation_split, validation_data, shuffle, class_weight, sample_weight, initial_epoch, steps_per_epoch, validation_steps, validation_batch_size, validation_freq, max_queue_size, workers, use_multiprocessing)[0m
+[1;32m    860[0m           val_x, val_y, val_sample_weight = (
+[1;32m    861[0m               data_adapter.unpack_x_y_sample_weight(validation_data))
+[0;32m--> 862[0;31m           val_logs = self.evaluate(
+[0m[1;32m    863[0m               [0mx[0m[0;34m=[0m[0mval_x[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    864[0m               [0my[0m[0;34m=[0m[0mval_y[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/keras/engine/training.py[0m in [0;36m_method_wrapper[0;34m(self, *args, **kwargs)[0m
+[1;32m     64[0m   [0;32mdef[0m [0m_method_wrapper[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     65[0m     [0;32mif[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0m_in_multi_worker_mode[0m[0;34m([0m[0;34m)[0m[0;34m:[0m  [0;31m# pylint: disable=protected-access[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 66[0;31m       [0;32mreturn[0m [0mmethod[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     67[0m [0;34m[0m[0m
+[1;32m     68[0m     [0;31m# Running inside `run_distribute_coordinator` already.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/keras/engine/training.py[0m in [0;36mevaluate[0;34m(self, x, y, batch_size, verbose, sample_weight, steps, callbacks, max_queue_size, workers, use_multiprocessing, return_dict)[0m
+[1;32m   1044[0m     [0;32mwith[0m [0mself[0m[0;34m.[0m[0mdistribute_strategy[0m[0;34m.[0m[0mscope[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1045[0m       [0;31m# Creates a `tf.data.Dataset` and handles batch and epoch iteration.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1046[0;31m       data_handler = data_adapter.DataHandler(
+[0m[1;32m   1047[0m           [0mx[0m[0;34m=[0m[0mx[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1048[0m           [0my[0m[0;34m=[0m[0my[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/keras/engine/data_adapter.py[0m in [0;36m__init__[0;34m(self, x, y, sample_weight, batch_size, steps_per_epoch, initial_epoch, epochs, shuffle, class_weight, max_queue_size, workers, use_multiprocessing, model)[0m
+[1;32m   1098[0m [0;34m[0m[0m
+[1;32m   1099[0m     [0madapter_cls[0m [0;34m=[0m [0mselect_data_adapter[0m[0;34m([0m[0mx[0m[0;34m,[0m [0my[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1100[0;31m     self._adapter = adapter_cls(
+[0m[1;32m   1101[0m         [0mx[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1102[0m         [0my[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/keras/engine/data_adapter.py[0m in [0;36m__init__[0;34m(self, x, y, sample_weights, sample_weight_modes, batch_size, epochs, steps, shuffle, **kwargs)[0m
+[1;32m    263[0m                **kwargs):
+[1;32m    264[0m     [0msuper[0m[0;34m([0m[0mTensorLikeDataAdapter[0m[0;34m,[0m [0mself[0m[0;34m)[0m[0;34m.[0m[0m__init__[0m[0;34m([0m[0mx[0m[0;34m,[0m [0my[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 265[0;31m     [0mx[0m[0;34m,[0m [0my[0m[0;34m,[0m [0msample_weights[0m [0;34m=[0m [0m_process_tensorlike[0m[0;34m([0m[0;34m([0m[0mx[0m[0;34m,[0m [0my[0m[0;34m,[0m [0msample_weights[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    266[0m     sample_weight_modes = broadcast_sample_weight_modes(
+[1;32m    267[0m         sample_weights, sample_weight_modes)
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/keras/engine/data_adapter.py[0m in [0;36m_process_tensorlike[0;34m(inputs)[0m
+[1;32m   1011[0m     [0;32mreturn[0m [0mx[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1012[0m [0;34m[0m[0m
+[0;32m-> 1013[0;31m   [0minputs[0m [0;34m=[0m [0mnest[0m[0;34m.[0m[0mmap_structure[0m[0;34m([0m[0m_convert_numpy_and_scipy[0m[0;34m,[0m [0minputs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1014[0m   [0;32mreturn[0m [0mnest[0m[0;34m.[0m[0m_list_to_tuple[0m[0;34m([0m[0minputs[0m[0;34m)[0m  [0;31m# pylint: disable=protected-access[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1015[0m [0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/util/nest.py[0m in [0;36mmap_structure[0;34m(func, *structure, **kwargs)[0m
+[1;32m    615[0m [0;34m[0m[0m
+[1;32m    616[0m   return pack_sequence_as(
+[0;32m--> 617[0;31m       [0mstructure[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m,[0m [0;34m[[0m[0mfunc[0m[0;34m([0m[0;34m*[0m[0mx[0m[0;34m)[0m [0;32mfor[0m [0mx[0m [0;32min[0m [0mentries[0m[0;34m][0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    618[0m       expand_composites=expand_composites)
+[1;32m    619[0m [0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/util/nest.py[0m in [0;36m<listcomp>[0;34m(.0)[0m
+[1;32m    615[0m [0;34m[0m[0m
+[1;32m    616[0m   return pack_sequence_as(
+[0;32m--> 617[0;31m       [0mstructure[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m,[0m [0;34m[[0m[0mfunc[0m[0;34m([0m[0;34m*[0m[0mx[0m[0;34m)[0m [0;32mfor[0m [0mx[0m [0;32min[0m [0mentries[0m[0;34m][0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    618[0m       expand_composites=expand_composites)
+[1;32m    619[0m [0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/keras/engine/data_adapter.py[0m in [0;36m_convert_numpy_and_scipy[0;34m(x)[0m
+[1;32m   1006[0m       [0;32mif[0m [0missubclass[0m[0;34m([0m[0mx[0m[0;34m.[0m[0mdtype[0m[0;34m.[0m[0mtype[0m[0;34m,[0m [0mnp[0m[0;34m.[0m[0mfloating[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1007[0m         [0mdtype[0m [0;34m=[0m [0mbackend[0m[0;34m.[0m[0mfloatx[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1008[0;31m       [0;32mreturn[0m [0mops[0m[0;34m.[0m[0mconvert_to_tensor[0m[0;34m([0m[0mx[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0mdtype[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1009[0m     [0;32melif[0m [0mscipy_sparse[0m [0;32mand[0m [0mscipy_sparse[0m[0;34m.[0m[0missparse[0m[0;34m([0m[0mx[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1010[0m       [0;32mreturn[0m [0m_scipy_sparse_to_sparse_tensor[0m[0;34m([0m[0mx[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/framework/ops.py[0m in [0;36mconvert_to_tensor[0;34m(value, dtype, name, as_ref, preferred_dtype, dtype_hint, ctx, accepted_result_types)[0m
+[1;32m   1339[0m [0;34m[0m[0m
+[1;32m   1340[0m     [0;32mif[0m [0mret[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1341[0;31m       [0mret[0m [0;34m=[0m [0mconversion_func[0m[0;34m([0m[0mvalue[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0mdtype[0m[0;34m,[0m [0mname[0m[0;34m=[0m[0mname[0m[0;34m,[0m [0mas_ref[0m[0;34m=[0m[0mas_ref[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1342[0m [0;34m[0m[0m
+[1;32m   1343[0m     [0;32mif[0m [0mret[0m [0;32mis[0m [0mNotImplemented[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/framework/tensor_conversion_registry.py[0m in [0;36m_default_conversion_function[0;34m(***failed resolving arguments***)[0m
+[1;32m     50[0m [0;32mdef[0m [0m_default_conversion_function[0m[0;34m([0m[0mvalue[0m[0;34m,[0m [0mdtype[0m[0;34m,[0m [0mname[0m[0;34m,[0m [0mas_ref[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     51[0m   [0;32mdel[0m [0mas_ref[0m  [0;31m# Unused.[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 52[0;31m   [0;32mreturn[0m [0mconstant_op[0m[0;34m.[0m[0mconstant[0m[0;34m([0m[0mvalue[0m[0;34m,[0m [0mdtype[0m[0;34m,[0m [0mname[0m[0;34m=[0m[0mname[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     53[0m [0;34m[0m[0m
+[1;32m     54[0m [0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/framework/constant_op.py[0m in [0;36mconstant[0;34m(value, dtype, shape, name)[0m
+[1;32m    259[0m     [0mValueError[0m[0;34m:[0m [0;32mif[0m [0mcalled[0m [0mon[0m [0ma[0m [0msymbolic[0m [0mtensor[0m[0;34m.[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    260[0m   """
+[0;32m--> 261[0;31m   return _constant_impl(value, dtype, shape, name, verify_shape=False,
+[0m[1;32m    262[0m                         allow_broadcast=True)
+[1;32m    263[0m [0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/framework/constant_op.py[0m in [0;36m_constant_impl[0;34m(value, dtype, shape, name, verify_shape, allow_broadcast)[0m
+[1;32m    268[0m   [0mctx[0m [0;34m=[0m [0mcontext[0m[0;34m.[0m[0mcontext[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    269[0m   [0;32mif[0m [0mctx[0m[0;34m.[0m[0mexecuting_eagerly[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 270[0;31m     [0mt[0m [0;34m=[0m [0mconvert_to_eager_tensor[0m[0;34m([0m[0mvalue[0m[0;34m,[0m [0mctx[0m[0;34m,[0m [0mdtype[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    271[0m     [0;32mif[0m [0mshape[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    272[0m       [0;32mreturn[0m [0mt[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.8/site-packages/tensorflow/python/framework/constant_op.py[0m in [0;36mconvert_to_eager_tensor[0;34m(value, ctx, dtype)[0m
+[1;32m     94[0m       [0mdtype[0m [0;34m=[0m [0mdtypes[0m[0;34m.[0m[0mas_dtype[0m[0;34m([0m[0mdtype[0m[0;34m)[0m[0;34m.[0m[0mas_datatype_enum[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     95[0m   [0mctx[0m[0;34m.[0m[0mensure_initialized[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 96[0;31m   [0;32mreturn[0m [0mops[0m[0;34m.[0m[0mEagerTensor[0m[0;34m([0m[0mvalue[0m[0;34m,[0m [0mctx[0m[0;34m.[0m[0mdevice_name[0m[0;34m,[0m [0mdtype[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     97[0m [0;34m[0m[0m
+[1;32m     98[0m [0;34m[0m[0m
+
+[0;31mMemoryError[0m: Unable to allocate 278. MiB for an array with shape (285120, 256, 1) and data type float32
+MemoryError: Unable to allocate 278. MiB for an array with shape (285120, 256, 1) and data type float32
+
